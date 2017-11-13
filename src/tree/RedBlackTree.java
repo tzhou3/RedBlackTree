@@ -248,7 +248,7 @@ public class RedBlackTree {
 			}else if (grandParent(toFix) != null && toFix.parent ==grandParent(toFix).left ) {
 				//If the parent is the left child of the grandparent
 				if(toFix == toFix.parent.right) { 
-					//if the node inserted is the right child of the parent you want to do addres the triangle case
+					//if the node inserted is the right child of the parent you want to address the triangle case
 					rotateLeft(toFix = toFix.parent); //Setting toFix to parent value because after rotation for triangle case
 					//Line case must also be addressed
 				}
