@@ -81,6 +81,7 @@ public class RedBlackTree {
 		toInsert.nodeColor = Color.Red;
 		fixInsert(toInsert);
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * Searches the Red Black Tree for the node
@@ -249,6 +250,25 @@ public class RedBlackTree {
 				//If the parent is the left child of the grandparent
 				if(toFix == toFix.parent.right) { 
 					//if the node inserted is the right child of the parent you want to address the triangle case
+=======
+	/**
+	 * Method to fix any violations the tree may make upon insertion
+	 * @param toFix
+	 */
+	public void fixInsert(Node toFix) {
+		//Will only need to fix if parent is red since node being inserted is red
+		if(toFix !=null && toFix !=root && toFix.parent.nodeColor == Color.Red) {
+			//Checking case where parent of node inserted is red and sibling of parent is also red
+			if(getSibling(toFix.parent).nodeColor == Color.Red) {
+				toFix.parent.nodeColor = Color.Black;
+				getSibling(toFix.parent).nodeColor = Color.Black;
+				grandParent(toFix).nodeColor = Color.Red;
+				fixInsert(grandParent(toFix));
+			}else if (grandParent(toFix) != null && toFix.parent ==grandParent(toFix).left ) {
+				//If the parent is the left child of the grandparent
+				if(toFix == toFix.parent.right) { 
+					//if the node inserted is the right child of the parent you want to do addres the triangle case
+>>>>>>> branch 'master' of https://github.com/tzhou3/RedBlackTree.git
 					rotateLeft(toFix = toFix.parent); //Setting toFix to parent value because after rotation for triangle case
 					//Line case must also be addressed
 				}
